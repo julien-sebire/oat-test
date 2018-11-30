@@ -24,3 +24,5 @@ IDE : Phpstorm
 - Installed phpunit test framework.
 - Created routes + controllers for the two endpoints (GET method).
 - Added first test just to ensure the controllers respond (empty JSON array).
+- Activated SSL on my default apache vhost since the online client calls the webservice as https.
+- Fixed CORS problem to access my local url from https://hr.oat.taocloud.org/client/
