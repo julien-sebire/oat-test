@@ -12,6 +12,9 @@
         "symfony/framework-bundle": "4.2.*",
         "symfony/yaml": "4.2.*"
     },
+    "require-dev": {
+        "symfony/phpunit-bridge": "4.2.*"
+    },
     "config": {
         "preferred-install": {
             "*": "dist"

@@ -13,13 +13,12 @@ IDE : Phpstorm
 
 ## Development process
 
-Created github repository http://github.com/julix/oat-test
-
-Created local vhost
-
-Initialized git repository
-
-Installed latest symfony4 skeleton
-
-
-
+- Created github repository http://github.com/julix/oat-test.
+- Created local vhost.
+- Initialized git repository.
+- Installed latest symfony4 skeleton.
+- Prepared client for local server at https://hr.oat.taocloud.org/client/
+    - User list: http://dev.oat-test.com/index.php/users?limit={{limit}}&offset={{offset}}&name={{filter}}
+    - User: http://dev.oat-test.com/index.php/users/{{user}}
+- Added sample test takers files.
+- Installed phpunit test framework.
