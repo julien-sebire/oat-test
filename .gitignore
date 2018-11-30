@@ -18,6 +18,10 @@
 !var/logs/.gitkeep
 !var/sessions/.gitkeep
 
+# Environment variables (Symfony4)
+/.env.local
+/.env.*.local
+
 # Parameters
 /app/config/parameters.yml
 /app/config/parameters.ini
@@ -31,8 +35,8 @@
 /vendor/
 
 # Assets and user uploads
-/web/bundles/
-/web/uploads/
+/public/bundles/
+/public/uploads/
 
 # PHPUnit
 /app/phpunit.xml
