@@ -13,6 +13,8 @@ IDE : Phpstorm
 
 ## Development process
 
+### Step 1: a first working webservice, responding to the online client in my local browser.
+
 - Created github repository http://github.com/julix/oat-test.
 - Created local vhost.
 - Initialized git repository.
@@ -26,3 +28,7 @@ IDE : Phpstorm
 - Added first test just to ensure the controllers respond (empty JSON array).
 - Activated SSL on my default apache vhost since the online client calls the webservice as https.
 - Fixed CORS problem to access my local url from https://hr.oat.taocloud.org/client/
+- Changed client configuration:
+    - User list: https://127.0.0.1/oat-test/public/index.php/users?limit={{limit}}&offset={{offset}}&name={{filter}}
+    - User: https://127.0.0.1/oat-test/public/index.php/users/{{user}}
+
