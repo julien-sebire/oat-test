@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\User;
 use App\Model\UserRepositoryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -57,7 +58,14 @@ class UserController extends AbstractController
             return new JsonResponse([]);
         }
 
-        return new JsonResponse($users);
+        return new JsonResponse(
+            array_map(
+                function (User $user) {
+                    return $user->toArray();
+                },
+                $users
+            )
+        );
     }
 
     /**
@@ -75,6 +83,6 @@ class UserController extends AbstractController
             return new JsonResponse('User not found!', JsonResponse::HTTP_NOT_FOUND);
         }
 
-        return new JsonResponse($user);
+        return new JsonResponse($user->toArray());
     }
 }

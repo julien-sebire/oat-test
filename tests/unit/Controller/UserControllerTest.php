@@ -39,10 +39,12 @@ class UserControllerTest extends TestCase
 
     public function testUserList_WithNoParameter_ReturnsAllUsers()
     {
-        $allUsers = [(new User())->setUserId('user1'), (new User())->setUserId('user2')];
-        $this->userRepository->method('findAll')->willReturn($allUsers);
+        $user1 = (new User())->setUserId('user1');
+        $user2 = (new User())->setUserId('user2');
 
-        $expected = $allUsers;
+        $expected = [$user1->toArray(), $user2->toArray()];
+
+        $this->userRepository->method('findAll')->willReturn([$user1, $user2]);
 
         /** @var Request|MockObject $request */
         $request = $this->getRequestMock();
@@ -53,10 +55,12 @@ class UserControllerTest extends TestCase
 
     public function testUserList_WithNameParameterAndExistingUser_ReturnsSearchResult()
     {
-        $expected = [(new User())->setUserId('user1')];
+        $user = (new User())->setUserId('user1');
         $userName = 'fosterabigail';
 
-        $this->userRepository->method('findByName')->with($userName)->willReturn($expected);
+        $expected = [$user->toArray()];
+
+        $this->userRepository->method('findByName')->with($userName)->willReturn([$user]);
 
         /** @var Request|MockObject $request */
         $request = $this->getRequestMock(['name' => $userName]);
@@ -85,11 +89,12 @@ class UserControllerTest extends TestCase
 
     public function testUserDetails_WithExistingId_ReturnsJson()
     {
-        $expected = (new User())->setUserId('user1');
+        $user = (new User())->setUserId('user1');
+        $expected = $user->toArray();
         $userName = 'fosterabigail';
 
         // User found
-        $this->userRepository->method('findOneById')->with($userName)->willReturn($expected);
+        $this->userRepository->method('findOneById')->with($userName)->willReturn($user);
 
         $actual = $this->sut->userDetails($userName);
 

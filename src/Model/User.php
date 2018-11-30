@@ -6,51 +6,98 @@ namespace App\Model;
  */
 class User
 {
-    /**
-     * @var string
-     */
-    private $userId;
+    const MAPPED_FIELDS = [
+        'login' => 'userId',
+    ];
 
     /**
      * @var string
      */
-    private $password;
+    private $userId = '';
 
     /**
      * @var string
      */
-    private $title;
+    private $password = '';
 
     /**
      * @var string
      */
-    private $lastname;
+    private $title = '';
 
     /**
      * @var string
      */
-    private $firstname;
+    private $lastname = '';
 
     /**
      * @var string
      */
-    private $gender;
+    private $firstname = '';
 
     /**
      * @var string
      */
-    private $email;
+    private $gender = '';
 
     /**
      * @var string
      */
-    private $picture;
+    private $email = '';
 
     /**
      * @var string
      */
-    private $address;
+    private $picture = '';
 
+    /**
+     * @var string
+     */
+    private $address = '';
+
+    ////////////////////////////////////////////////////////////////////////////
+    /// Constructor and object to array conversion.
+
+    /**
+     * User constructor.
+     * Allows property population from array of fields.
+     *
+     * @param array $fields array of fields corresponding to User properties
+     */
+    public function __construct(array $fields = [])
+    {
+        foreach ($fields as $name => $value) {
+            // Finds the property name from field name (most are equivalent, some are mapped.
+            $property = self::MAPPED_FIELDS[$name] ?? $name;
+
+            // Checks for valid setter function.
+            $setter = 'set' . ucfirst($property);
+            if (!is_callable([$this, $setter])) {
+                throw new \RuntimeException('Unable to handle unknown field "' . $name . '"');
+            }
+
+            $this->$setter($value);
+        }
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'userId' => $this->getUserId(),
+            'password' => $this->getPassword(),
+            'title' => $this->getTitle(),
+            'lastname' => $this->getLastname(),
+            'firstname' => $this->getFirstname(),
+            'gender' => $this->getGender(),
+            'email' => $this->getEmail(),
+            'picture' => $this->getPicture(),
+            'address' => $this->getAddress(),
+        ];
+    }
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    /// Trivial accessors.
     /**
      * @return string
      */
