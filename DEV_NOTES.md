@@ -13,7 +13,7 @@ IDE : Phpstorm
 
 ## Development process
 
-### Step 1: a first working webservice, responding to the online client in my local browser.
+### Step 1: A first working webservice, responding to the online client in my local browser.
 
 - Created github repository http://github.com/julix/oat-test.
 - Created local vhost.
@@ -37,4 +37,9 @@ Note: a Rest Api should return Http code 404 when no corresponding data is found
 However, the online client doesn't seem to deal with that for the user list, so I simply returned an empty Json ([]) to avoid error popup window.
 The user detail call deals with it.
 Didn't find any specification on this.
+
+### Step 2: Business logi.
+
+- Added a data object to hold user data. Only protected properties and trivial public accessors for now, so no test on User class.
+- Moved the responsibility of query logic from controller to a user repository interface.
 

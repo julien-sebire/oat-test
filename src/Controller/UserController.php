@@ -2,18 +2,32 @@
 
 namespace App\Controller;
 
-use PHPUnit\Util\Json;
+use App\Model\UserRepositoryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 /**
- * Class UserController
- * Provides access to test takers list and details
+ * Provides access to test takers list and details.
  */
 class UserController extends AbstractController
 {
+    /**
+     * @var UserRepositoryInterface
+     */
+    protected $userRepository;
+
+    /**
+     * UserController constructor.
+     *
+     * @param UserRepositoryInterface $userRepository
+     */
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     /**
      * Returns a list of users
      *
@@ -24,27 +38,20 @@ class UserController extends AbstractController
     public function userList(Request $request): JsonResponse
     {
         // Retrieves parameters from query string.
+        $limit = $request->get('limit', 0);
+        $offset = $request->get('offset', 0);
+        $name = $request->get('name', '');
 
-        $filter = $request->get('name');
+        // Sets query parameters, to avoid parameters multiplication in find* methods.
+        $this->userRepository
+            ->setLimit($limit)
+            ->setOffset($offset);
 
-        // Just a dummy test to ensure the client receives the good data format.
-        if ($filter === 'fosterabigail') {
-            $users = [
-                [
-                    'userId' => 'fosterabigail',
-                    'password' => 'P7ghvUQJNr6myOEP',
-                    'title' => 'mrs',
-                    'lastname' => 'foster',
-                    'firstname' => 'abigail',
-                    'gender' => 'female',
-                    'email' => 'abigail.foster60@example.com',
-                    'picture' => 'https://api.randomuser.me/0.2/portraits/women/10.jpg',
-                    'address' => '1851 saddle dr anna 69319',
-                ]
-            ];
-        } else {
-            $users = [];
-        }
+        // Only two methods are necessary : either a name search or a full set.
+        $users = ($name !== ''
+            ? $this->userRepository->findByName($name)
+            : $this->userRepository->findAll()
+        );
 
         if (count($users) === 0) {
             return new JsonResponse([]);
@@ -62,24 +69,9 @@ class UserController extends AbstractController
      */
     public function userDetails(string $id): JsonResponse
     {
-        // Just a dummy test to ensure the client receives the good data format.
-        if ($id === 'fosterabigail') {
-            $user = [
-                'userId' => 'fosterabigail',
-                'password' => 'P7ghvUQJNr6myOEP',
-                'title' => 'mrs',
-                'lastname' => 'foster',
-                'firstname' => 'abigail',
-                'gender' => 'female',
-                'email' => 'abigail.foster60@example.com',
-                'picture' => 'https://api.randomuser.me/0.2/portraits/women/10.jpg',
-                'address' => '1851 saddle dr anna 69319',
-            ];
-        } else {
-            $user = [];
-        }
+        $user = $this->userRepository->findOneById($id);
 
-        if (count($user) === 0) {
+        if ($user === null) {
             return new JsonResponse('User not found!', JsonResponse::HTTP_NOT_FOUND);
         }
 
