@@ -31,4 +31,4 @@ IDE : Phpstorm
 - Changed client configuration:
     - User list: https://127.0.0.1/oat-test/public/index.php/users?limit={{limit}}&offset={{offset}}&name={{filter}}
     - User: https://127.0.0.1/oat-test/public/index.php/users/{{user}}
-
+- Added a dummy user to test the user details
