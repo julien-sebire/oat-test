@@ -22,3 +22,5 @@ IDE : Phpstorm
     - User: http://dev.oat-test.com/index.php/users/{{user}}
 - Added sample test takers files.
 - Installed phpunit test framework.
+- Created routes + controllers for the two endpoints (GET method).
+- Added first test just to ensure the controllers respond (empty JSON array).
