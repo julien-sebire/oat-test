@@ -32,3 +32,9 @@ IDE : Phpstorm
     - User list: https://127.0.0.1/oat-test/public/index.php/users?limit={{limit}}&offset={{offset}}&name={{filter}}
     - User: https://127.0.0.1/oat-test/public/index.php/users/{{user}}
 - Added a dummy user to test the user details
+
+Note: a Rest Api should return Http code 404 when no corresponding data is found.
+However, the online client doesn't seem to deal with that for the user list, so I simply returned an empty Json ([]) to avoid error popup window.
+The user detail call deals with it.
+Didn't find any specification on this.
+

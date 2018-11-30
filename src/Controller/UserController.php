@@ -47,7 +47,7 @@ class UserController extends AbstractController
         }
 
         if (count($users) === 0) {
-            return new JsonResponse('No user found!', JsonResponse::HTTP_NOT_FOUND);
+            return new JsonResponse([]);
         }
 
         return new JsonResponse($users);

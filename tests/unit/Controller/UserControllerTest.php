@@ -47,14 +47,13 @@ class UserControllerTest extends TestCase
 
     public function testUserList_WithNoData_ReturnsHttp404()
     {
-        $expected = '"No user found!"';
+        $expected = [];
 
         /** @var Request|MockObject $request */
         $request = $this->createConfiguredMock(Request::class, []);
         $actual = $this->sut->userList($request);
 
-        $this->assertEquals($expected, $actual->getContent());
-        $this->assertEquals(404, $actual->getStatusCode());
+        $this->assertEquals(json_encode($expected), $actual->getContent());
     }
 
     public function testUserDetails_WithExistingId_ReturnsJson()
@@ -70,7 +69,7 @@ class UserControllerTest extends TestCase
             'picture' => 'https://api.randomuser.me/0.2/portraits/women/10.jpg',
             'address' => '1851 saddle dr anna 69319',
         ];
-        $actual = $this->sut->userDetails('fostedrabigail');
+        $actual = $this->sut->userDetails('fosterabigail');
 
         $this->assertEquals(json_encode($expected), $actual->getContent());
     }
