@@ -1,6 +1,6 @@
 # oat-test
 
-This project sets up a web service providing read-only a list of users.
+This project sets up a web service providing a read-only list of users.
 
 It allows you to provide user data as different file format. As to now, it only support JSON and CSV files. 
 Two sample files are provided as a first set of usable data.
@@ -21,7 +21,7 @@ See [Development notes](DEV_NOTES.md) to see the development details.
 
 ## Installation
 
-Since this is not in the packagist repositories (for obvious reasons), the installation just follow these steps :
+Since this is not in the packagist repositories (for obvious reasons), the installation process just follows these steps :
 
 - Clone this repo (git clone https://github.com/julix/oat-test.git) or download and unzip the [archive](https://github.com/julix/oat-test/archive/master.zip) to the directory of your choice on your server (e.g. /var/www/oat-test).
 - Set up your vhost document root to the /public directory of the repository (e.g. /var/www/oat-test/public).
@@ -66,12 +66,12 @@ Two endpoints are provided:
 
 ### User list
 
-| Verb | URI         | Parameters | Type                 | Description                                                                                          |
-|------|-------------|------------|----------------------|------------------------------------------------------------------------------------------------------|
-| GET  | /users      |            |                      | Returns the whole user list                                                                          |
-|      |             | limit      | Integer (default: 0) | Limits the number of results returned (0 means no limit)                                             |
-|      |             | offset     | Integer (default: 0) | Index of the first result returned (beginning at 0)                                                  |
-|      |             | name       | String               | Returns all users responding to the given name (searches in first name, last name, e-mail and login) |
+| Verb | URI         | Parameters | Type                 | Description                                                                                           |
+|------|-------------|------------|----------------------|-------------------------------------------------------------------------------------------------------|
+| GET  | /users      |            |                      | Returns the whole user list.                                                                          |
+|      |             | limit      | Integer (default: 0) | Limits the number of results returned (0 means no limit).                                             |
+|      |             | offset     | Integer (default: 0) | Index of the first result returned (beginning at 0).                                                  |
+|      |             | name       | String               | Returns all users responding to the given name (searches in first name, last name, e-mail and login). |
 
 ### Examples:
 
@@ -94,9 +94,9 @@ Returns all users having the string "doe" in their first name, last name, e-mail
 
 ### User details
 
-| Verb | URI         | Description                                                                            |
-|------|-------------|----------------------------------------------------------------------------------------|
-| GET  | /users/{id} | Returns the user with the given id or an error 404 when 0 or more than 1 user is found |
+| Verb | URI         | Description                                                                             |
+|------|-------------|-----------------------------------------------------------------------------------------|
+| GET  | /users/{id} | Returns the user with the given id or an error 404 when 0 or more than 1 user is found. |
 
 ### Examples:
 
