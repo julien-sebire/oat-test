@@ -104,9 +104,11 @@ class UserRepository implements UserRepositoryInterface
     public function findOneById(string $id): ?User
     {
         // Finds user with the given id
-        $users = array_filter($this->users, function (User $user) use ($id) {
-            return $user->hasUserId($id);
-        });
+        $users = array_values(
+            array_filter($this->users, function (User $user) use ($id) {
+                return $user->hasUserId($id);
+            })
+        );
 
         switch (count($users)) {
             case 0 :

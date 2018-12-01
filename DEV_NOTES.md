@@ -1,5 +1,6 @@
 # Notes about the test
 
+
 ## Development environment
 
 Created and tested on the following LAMP stack versions:
@@ -10,6 +11,26 @@ Created and tested on the following LAMP stack versions:
 - MariaDB 10.1.26
 
 IDE : Phpstorm
+
+
+## Development schedule
+
+To do this test in a realistic manner, I decided on the following schedule:
+
+- day 1 (friday 30th): 8h
+- day 2 (saturday 1st): 8h
+- 8 hours break (night and meals)
+
+I roughly ended with the following durations :
+
+- day 1: 7.5 hours
+    - 3:30pm to 7:30pm : 4 hours
+    - lunch break and taking care of my daughter
+    - 10:00pm to 1:30am : 3.5 hours
+- 6.5 hours night
+- day 2: hours
+    - 7:00am to 12:00pm : 5 hours
+
 
 ## Development process
 
@@ -64,3 +85,12 @@ Didn't find any specification on this.
     - factorized sourceFile code in a FileProvider
     - JsonProvider and CsvProvider only do the job of reading files into an array of users represented by associative arrays.
 - Added dependency injection configuration for CsvProvider + one-line provider changer (services.yaml line 50)
+
+
+### Step 4: Refining the client results
+
+I noticed the following things in the client display:
+
+- User details for some users return an error 500. Browser cache hid this problem from my eyes.
+    
+    => array_filter does not reorder array keys, array_values would solve it.
