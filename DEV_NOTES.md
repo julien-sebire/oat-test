@@ -55,4 +55,7 @@ Didn't find any specification on this.
 ### Step 3: Retrieving data.
 
 - Used an object implementing DataProviderInterface to feed UserRepository with users.
-
+- Created a first basic JsonProvider:
+    - specify data source file
+    - reads a json file
+    - convert it to User objects
