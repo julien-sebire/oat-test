@@ -1,6 +1,8 @@
 <?php
 namespace App\Model;
 
+use App\DataAccess\UserProviderInterface;
+
 /**
  * Retrieves user(s) from database.
  */
@@ -27,10 +29,10 @@ class UserRepository implements UserRepositoryInterface
      */
     protected $users;
 
-    public function __construct(array $users)
+    public function __construct(UserProviderInterface $userProvider)
     {
-        // @todo: ensure every element in array is a real User object.
-        $this->users = $users;
+        // Get User objects from data provider.
+        $this->users = $userProvider->load();
     }
 
     /**

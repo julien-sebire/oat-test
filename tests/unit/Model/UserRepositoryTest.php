@@ -1,6 +1,7 @@
 <?php
 namespace App\Model;
 
+use App\DataAccess\UserProviderInterface;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -18,11 +19,20 @@ class UserRepositoryTest extends TestCase
      */
     protected $users;
 
+    /**
+     * @var UserProviderInterface
+     */
+    protected $userProvider;
+
     public function setUp()
     {
-        // Provides User objects instead of arrays.
-        $this->convertUsersData();
-        $this->sut = new UserRepository($this->users);
+        // Provides User objects to the repository.
+        $this->userProvider = $this->createConfiguredMock(
+            UserProviderInterface::class,
+            ['load' => $this->convertUsersData()]
+        );
+
+        $this->sut = new UserRepository($this->userProvider);
     }
 
     /**
@@ -43,19 +53,22 @@ class UserRepositoryTest extends TestCase
 
     public function limitsAndOffsetsToTest()
     {
-        $this->convertUsersData();
+        // Can not use a variable that has been set in the setUp method, as this data provider is called before setUp for each test.
+        $users = $this->convertUsersData();
 
         return [
-            'no limit returns all' => [0, 0, $this->users],
-            'lirst page' => [1, 0, [$this->users[0]]],
-            'last page' => [1, 1, [$this->users[1]]],
-            'out of bound returns inbound array' => [2, 1, [$this->users[1]]],
+            'no limit returns all' => [0, 0, $users],
+            'lirst page' => [1, 0, [$users[0]]],
+            'last page' => [1, 1, [$users[1]]],
+            'out of bound returns inbound array' => [2, 1, [$users[1]]],
         ];
     }
 
     public function testFindOneById_WithExistingUser_ReturnsUser()
     {
-        $this->assertEquals($this->users[0], $this->sut->findOneById('fosterabigail'));
+        $users = $this->convertUsersData();
+
+        $this->assertEquals($users[0], $this->sut->findOneById('fosterabigail'));
     }
 
     public function testFindOneById_WithNotExistingUser_ReturnsNull()
@@ -65,6 +78,8 @@ class UserRepositoryTest extends TestCase
 
     /**
      * Provides array of User objects instead of array of arrays.
+     *
+     * @return array|User[]
      */
     protected function convertUsersData()
     {
@@ -93,7 +108,7 @@ class UserRepositoryTest extends TestCase
             ]
         ];
 
-        $this->users = array_map(
+        return array_map(
             function (array $user) {
                 return new User($user);
             },

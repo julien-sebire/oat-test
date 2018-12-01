@@ -13,6 +13,7 @@ IDE : Phpstorm
 
 ## Development process
 
+
 ### Step 1: A first working webservice, responding to the online client in my local browser.
 
 - Created github repository http://github.com/julix/oat-test.
@@ -38,6 +39,7 @@ However, the online client doesn't seem to deal with that for the user list, so 
 The user detail call deals with it.
 Didn't find any specification on this.
 
+
 ### Step 2: Business logic.
 
 - Added a data object to hold user data. Only protected properties and trivial public accessors for now, so no test on User class.
@@ -48,3 +50,9 @@ Didn't find any specification on this.
 - Adding user selection (id, name) in User, and used them in UserRepository
     - Stopped on a breaking unit test, to be sure where to start again tomorrow - time to go to bed
     - Resumed UserRepository test implementation: now using User objects instead of arrays + moved the raw data to bottom of test class for readability sake.
+
+
+### Step 3: Retrieving data.
+
+- Used an object implementing DataProviderInterface to feed UserRepository with users.
+
