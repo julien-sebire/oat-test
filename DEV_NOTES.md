@@ -47,3 +47,4 @@ Didn't find any specification on this.
     - this may seem overkill but will be useful when different data sources come to play. (not YAGNI, I know)
 - Adding user selection (id, name) in User, and used them in UserRepository
     - Stopped on a breaking unit test, to be sure where to start again tomorrow - time to go to bed
+    - Resumed UserRepository test implementation: now using User objects instead of arrays + moved the raw data to bottom of test class for readability sake.

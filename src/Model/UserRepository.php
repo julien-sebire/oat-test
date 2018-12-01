@@ -1,8 +1,6 @@
 <?php
 namespace App\Model;
 
-use App\Data\DataAccessorInterface;
-
 /**
  * Retrieves user(s) from database.
  */
@@ -98,6 +96,8 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @throws \LogicException when more than one share the same id.
      */
     public function findOneById(string $id): ?User
     {
