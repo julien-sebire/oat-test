@@ -59,3 +59,4 @@ Didn't find any specification on this.
     - specify data source file
     - reads a json file
     - convert it to User objects
+- Added dependency injection configuration
