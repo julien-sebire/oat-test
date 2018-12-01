@@ -94,3 +94,7 @@ I noticed the following things in the client display:
 - User details for some users return an error 500. Browser cache hid this problem from my eyes.
     
     => array_filter does not reorder array keys, array_values would solve it.
+
+- Column headers in the grid reflect the field names in the Json.
+
+    => Let's have prettier column names.

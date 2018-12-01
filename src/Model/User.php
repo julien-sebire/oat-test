@@ -83,15 +83,15 @@ class User
     public function toArray(): array
     {
         return [
-            'userId' => $this->getUserId(),
-            'password' => $this->getPassword(),
-            'title' => $this->getTitle(),
-            'lastname' => $this->getLastname(),
-            'firstname' => $this->getFirstname(),
-            'gender' => $this->getGender(),
-            'email' => $this->getEmail(),
-            'picture' => $this->getPicture(),
-            'address' => $this->getAddress(),
+            'Login' => $this->getUserId(),
+            'Password' => $this->getPassword(),
+            'Title' => $this->getTitle(),
+            'Last name' => $this->getLastname(),
+            'First name' => $this->getFirstname(),
+            'Gender' => $this->getGender(),
+            'e-mail' => $this->getEmail(),
+            'Picture' => $this->getPicture(),
+            'Address' => $this->getAddress(),
         ];
     }
 
