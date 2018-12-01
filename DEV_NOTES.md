@@ -38,11 +38,12 @@ However, the online client doesn't seem to deal with that for the user list, so 
 The user detail call deals with it.
 Didn't find any specification on this.
 
-### Step 2: Business logi.
+### Step 2: Business logic.
 
 - Added a data object to hold user data. Only protected properties and trivial public accessors for now, so no test on User class.
 - Moved the responsibility of query logic from controller to a user repository interface.
 - Implemented UserRepository and User with array <-> object conversion with field mapping.
     - Changed result returned by userController with User object to array conversion.
     - this may seem overkill but will be useful when different data sources come to play. (not YAGNI, I know)
-    
+- Adding user selection (id, name) in User, and used them in UserRepository
+    - Stopped on a breaking unit test, to be sure where to start again tomorrow - time to go to bed

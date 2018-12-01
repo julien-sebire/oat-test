@@ -42,6 +42,7 @@ interface UserRepositoryInterface
 
     /**
      * Finds an object given an id.
+     * This method is not affected by limit and offset properties.
      *
      * @param string $id id of the object to find.
      *

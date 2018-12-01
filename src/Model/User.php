@@ -95,9 +95,39 @@ class User
         ];
     }
 
+    ////////////////////////////////////////////////////////////////////////////
+    /// User selection.
+
+    /**
+     * Does the user have the given name in first name, last name, email or user id?
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    public function hasName(string $name): bool
+    {
+        return strpos($this->getFirstname(), $name) !== false
+            || strpos($this->getLastname(), $name) !== false
+            || strpos($this->getEmail(), $name) !== false
+            || strpos($this->getUserId(), $name) !== false;
+    }
+
+    /**
+     * Does the user have the given id?
+     *
+     * @param string $id
+     *
+     * @return bool
+     */
+    public function hasUserId(string $id): bool
+    {
+        return $this->getUserId() === $id;
+    }
 
     ////////////////////////////////////////////////////////////////////////////
     /// Trivial accessors.
+
     /**
      * @return string
      */

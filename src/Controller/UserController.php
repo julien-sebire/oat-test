@@ -77,7 +77,11 @@ class UserController extends AbstractController
      */
     public function userDetails(string $id): JsonResponse
     {
-        $user = $this->userRepository->findOneById($id);
+        try {
+            $user = $this->userRepository->findOneById($id);
+        } catch(\LogicException $exception) {
+            return new JsonResponse($exception->getMessage(), JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+        }
 
         if ($user === null) {
             return new JsonResponse('User not found!', JsonResponse::HTTP_NOT_FOUND);
