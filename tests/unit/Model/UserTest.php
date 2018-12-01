@@ -52,22 +52,40 @@ class UserTest extends TestCase
         $this->sut = new User(['unknown field name' => 'whatever']);
     }
 
-    public function testToArray()
+    public function testGetListArray()
     {
         $this->sut = new User(self::TEST_USER);
 
         $expected = [
             'userId' => 'fosterabigail',
-            'password' => 'P7ghvUQJNr6myOEP',
-            'title' => 'mrs',
-            'lastname' => 'foster',
-            'firstname' => 'abigail',
-            'gender' => 'female',
-            'email' => 'abigail.foster60@example.com',
-            'picture' => 'https://api.randomuser.me/0.2/portraits/women/10.jpg',
-            'address' => '1851 saddle dr anna 69319',
+            'Login' => 'fosterabigail',
+            'Title' => 'mrs',
+            'Last name' => 'foster',
+            'First name' => 'abigail',
+            'Gender' => 'female',
+            'e-mail' => 'abigail.foster60@example.com',
+            'Address' => '1851 saddle dr anna 69319',
         ];
 
-        $this->assertEquals($expected, $this->sut->toArray());
+        $this->assertEquals($expected, $this->sut->getListArray());
+    }
+
+    public function testGetDetailsArray()
+    {
+        $this->sut = new User(self::TEST_USER);
+
+        $expected = [
+            'Login' => 'fosterabigail',
+            'Password' => 'P7ghvUQJNr6myOEP',
+            'Title' => 'mrs',
+            'Last name' => 'foster',
+            'First name' => 'abigail',
+            'Gender' => 'female',
+            'e-mail' => 'abigail.foster60@example.com',
+            'picture' => 'https://api.randomuser.me/0.2/portraits/women/10.jpg',
+            'Address' => '1851 saddle dr anna 69319',
+        ];
+
+        $this->assertEquals($expected, $this->sut->getDetailsArray());
     }
 }

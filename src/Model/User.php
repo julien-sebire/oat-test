@@ -80,10 +80,31 @@ class User
         }
     }
 
-    public function toArray(): array
+    /**
+     * Converts to array for user list.
+     * @return array
+     */
+    public function getListArray(): array
     {
         return [
             'userId' => $this->getUserId(),
+            'Login' => $this->getUserId(),
+            'Title' => $this->getTitle(),
+            'Last name' => $this->getLastname(),
+            'First name' => $this->getFirstname(),
+            'Gender' => $this->getGender(),
+            'e-mail' => $this->getEmail(),
+            'Address' => $this->getAddress(),
+        ];
+    }
+
+    /**
+     * Converts to array for user details.
+     * @return array
+     */
+    public function getDetailsArray(): array
+    {
+        return [
             'Login' => $this->getUserId(),
             'Password' => $this->getPassword(),
             'Title' => $this->getTitle(),
@@ -91,8 +112,8 @@ class User
             'First name' => $this->getFirstname(),
             'Gender' => $this->getGender(),
             'e-mail' => $this->getEmail(),
-            'Picture' => $this->getPicture(),
             'Address' => $this->getAddress(),
+            'picture' => $this->getPicture(),   // "picture" is fixed value for picture display.
         ];
     }
 

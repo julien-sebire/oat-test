@@ -24,13 +24,13 @@ To do this test in a realistic manner, I decided on the following schedule:
 I roughly ended with the following durations :
 
 - day 1: 7.5 hours
-    - 3:30pm to 7:30pm : 4 hours
+    - 3:30pm to 7:30pm: 4 hours
     - lunch break and taking care of my daughter
-    - 10:00pm to 1:30am : 3.5 hours
+    - 10:00pm to 1:30am: 3.5 hours
 - 6.5 hours night
 - day 2: hours
-    - 7:00am to 12:00pm : 5 hours
-
+    - 7:00am to 12:15pm: 5 hours
+    - 12:45pm to : hours
 
 ## Development process
 
@@ -105,3 +105,10 @@ I noticed the following things in the client display:
     => Configured userId as Entity Id in the client
     => I chose to keep the login still using the login value as primary key (could have used an arbitrary integer, but login should be deterministic so I kept login).
 
+- Details fields for picture is fixed value "picture".
+- User List should not display password and picture url (I guess).
+- Details view shows login and userId.
+
+    => Replaced User::toArray with User::getListArray and User::getDetailsArray to be able to provide different fields to the list and details view.
+
+Went through all client functionality (search, navigation, details), working smoothly.

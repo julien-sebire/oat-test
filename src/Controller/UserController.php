@@ -61,7 +61,7 @@ class UserController extends AbstractController
         return new JsonResponse(
             array_map(
                 function (User $user) {
-                    return $user->toArray();
+                    return $user->getListArray();
                 },
                 $users
             )
@@ -87,6 +87,6 @@ class UserController extends AbstractController
             return new JsonResponse('User not found!', JsonResponse::HTTP_NOT_FOUND);
         }
 
-        return new JsonResponse($user->toArray());
+        return new JsonResponse($user->getDetailsArray());
     }
 }

@@ -35,14 +35,14 @@ class UserControllerTest extends TestCase
     }
 
     ////////////////////////////////////////////////////////////////////////////
-    /// userList
+    /// User List
 
     public function testUserList_WithNoParameter_ReturnsAllUsers()
     {
         $user1 = (new User())->setUserId('user1');
         $user2 = (new User())->setUserId('user2');
 
-        $expected = [$user1->toArray(), $user2->toArray()];
+        $expected = [$user1->getListArray(), $user2->getListArray()];
 
         $this->userRepository->method('findAll')->willReturn([$user1, $user2]);
 
@@ -58,7 +58,7 @@ class UserControllerTest extends TestCase
         $user = (new User())->setUserId('user1');
         $userName = 'fosterabigail';
 
-        $expected = [$user->toArray()];
+        $expected = [$user->getListArray()];
 
         $this->userRepository->method('findByName')->with($userName)->willReturn([$user]);
 
@@ -85,12 +85,12 @@ class UserControllerTest extends TestCase
     }
 
     ////////////////////////////////////////////////////////////////////////////
-    /// UserDetails
+    /// User Details
 
     public function testUserDetails_WithExistingId_ReturnsJson()
     {
         $user = (new User())->setUserId('user1');
-        $expected = $user->toArray();
+        $expected = $user->getDetailsArray();
         $userName = 'fosterabigail';
 
         // User found
