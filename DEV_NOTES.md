@@ -28,9 +28,10 @@ I roughly ended with the following durations :
     - lunch break and taking care of my daughter
     - 10:00pm to 1:30am: 3.5 hours
 - 6.5 hours night
-- day 2: hours
+- day 2: 7 hours
     - 7:00am to 12:15pm: 5 hours
-    - 12:45pm to : hours
+    - 12:45pm to 14:45pm: 2 hours
+
 
 ## Development process
 
@@ -112,3 +113,9 @@ I noticed the following things in the client display:
     => Replaced User::toArray with User::getListArray and User::getDetailsArray to be able to provide different fields to the list and details view.
 
 Went through all client functionality (search, navigation, details), working smoothly.
+
+## To go further
+
+Data access from database, such as mysql could be done in two ways:
+    - a database access layer providing a full list of users to the UserRepository
+    - Renaming UserRepository to a more specific name such as FileUserRepository and implementing a DatabseUserRepositoring to take advantage of all the requesting possibilities of chosen RDBM.
