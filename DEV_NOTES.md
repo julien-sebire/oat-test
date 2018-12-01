@@ -119,5 +119,5 @@ Went through all client functionality (search, navigation, details), working smo
 
 Data access from database, such as mysql could be done in two ways:
 
-    - a database access layer providing a full list of users to the UserRepository
-    - Renaming UserRepository to a more specific name such as FileUserRepository and implementing a DatabseUserRepositoring to take advantage of all the requesting possibilities of chosen RDBM.
+- a database access layer providing a full list of users to the UserRepository
+- Renaming UserRepository to a more specific name such as FileUserRepository and implementing a DatabseUserRepositoring to take advantage of all the requesting possibilities of chosen RDBM.
