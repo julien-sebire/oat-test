@@ -98,3 +98,10 @@ I noticed the following things in the client display:
 - Column headers in the grid reflect the field names in the Json.
 
     => Let's have prettier column names.
+
+- The column used as Entity Id is not displayed and userId is not provided for the call to user details, redirecting to user list.
+
+    => Added a userId field instead of login.
+    => Configured userId as Entity Id in the client
+    => I chose to keep the login still using the login value as primary key (could have used an arbitrary integer, but login should be deterministic so I kept login).
+

@@ -83,6 +83,7 @@ class User
     public function toArray(): array
     {
         return [
+            'userId' => $this->getUserId(),
             'Login' => $this->getUserId(),
             'Password' => $this->getPassword(),
             'Title' => $this->getTitle(),
