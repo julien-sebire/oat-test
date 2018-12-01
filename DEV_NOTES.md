@@ -60,3 +60,7 @@ Didn't find any specification on this.
     - reads a json file
     - convert it to User objects
 - Added dependency injection configuration
+- Added a CsvProvider
+    - factorized sourceFile code in a FileProvider
+    - JsonProvider and CsvProvider only do the job of reading files into an array of users represented by associative arrays.
+    

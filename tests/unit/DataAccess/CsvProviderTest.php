@@ -4,11 +4,11 @@ namespace App\DataAccess;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Tests for JsonProvider class.
+ * Tests for CsvProvider class.
  */
-class JsonProviderTest extends TestCase
+class CsvProviderTest extends TestCase
 {
-    const SOURCE_FILE = __DIR__ . '/../_resources/testtakers.json';
+    const SOURCE_FILE = __DIR__ . '/../_resources/testtakers.csv';
 
     const FIRST_USER = [
         'login' => 'fosterabigail',
@@ -29,7 +29,7 @@ class JsonProviderTest extends TestCase
 
     public function setUp()
     {
-        $this->sut = new JsonProvider();
+        $this->sut = new CsvProvider();
         $this->sut->setSourceFile(self::SOURCE_FILE);
     }
 
