@@ -63,4 +63,4 @@ Didn't find any specification on this.
 - Added a CsvProvider
     - factorized sourceFile code in a FileProvider
     - JsonProvider and CsvProvider only do the job of reading files into an array of users represented by associative arrays.
-    
+- Added dependency injection configuration for CsvProvider + one-line provider changer (services.yaml line 50)
