@@ -28,10 +28,11 @@ I roughly ended with the following durations :
     - lunch break and taking care of my daughter
     - 10:00pm to 1:30am: 3.5 hours
 - 6.5 hours night
-- day 2: 7 hours
+- day 2: 7.5 hours
     - 7:00am to 12:15pm: 5 hours
-    - 12:45pm to 14:45pm: 2 hours
-
+    - lunch break
+    - 12:45pm to 11:15pm: 2.5 hours
+- Total: 15 hours with small breaks every now and then.
 
 ## Development process
 
