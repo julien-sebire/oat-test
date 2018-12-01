@@ -15,15 +15,15 @@ See [Development notes](DEV_NOTES.md) to see the development details.
 
 ## Requirements
 
-PHP 7.1+
-Symfony 4.2+
-Apache or any other web server
+- PHP 7.1+
+- Symfony 4.2+
+- Apache or any other web server
 
 ## Installation
 
 Since this is not in the packagist repositories (for obvious reasons), the installation just follow these steps :
 
-- Clone this repo (git clone https://github.com/julix/oat-test.git) or download and unzip the [archive](archive/master.zip) to the directory of your choice on your server (e.g. /var/www/oat-test).
+- Clone this repo (git clone https://github.com/julix/oat-test.git) or download and unzip the [archive](https://github.com/julix/oat-test/archive/master.zip) to the directory of your choice on your server (e.g. /var/www/oat-test).
 - Set up your vhost document root to the /public directory of the repository (e.g. /var/www/oat-test/public).
     See [Apache vhost examples](https://httpd.apache.org/docs/2.4/en/vhosts/examples.html) or [NginX vhost examples](https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/) for more information.
 - Try and visit the service page in your web browser: <your vhost>/index.php/users. You should see a rather large Json string.
@@ -40,6 +40,26 @@ To provide your own data:
     - @app.json_provider for JSON file
     - @app.csv_provider for CSV file
 
+## File format
+
+### JSON format:
+
+The JSON file must contain a array of objects, with the following fields :
+
+### CSV format:
+
+The CSV file must contain a user by line, with the following fields :
+
+- login
+- password
+- title
+- lastname
+- firstname
+- gender
+- email
+- picture
+- address
+
 ## <a name="api"></a>API
 
 Two endpoints are provided:
@@ -47,7 +67,7 @@ Two endpoints are provided:
 ### User list
 
 | Verb | URI         | Parameters | Type                 | Description                                                                                          |
-|------|-------------|------------|-----------------------------------------------------------------------------------------------------------------------------|
+|------|-------------|------------|----------------------|------------------------------------------------------------------------------------------------------|
 | GET  | /users      |            |                      | Returns the whole user list                                                                          |
 |      |             | limit      | Integer (default: 0) | Limits the number of results returned (0 means no limit)                                             |
 |      |             | offset     | Integer (default: 0) | Index of the first result returned (beginning at 0)                                                  |
