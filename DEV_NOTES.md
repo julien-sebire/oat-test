@@ -115,6 +115,16 @@ I noticed the following things in the client display:
 
 Went through all client functionality (search, navigation, details), working smoothly.
 
+
+### Step 5: Writing documentation
+
+- Requirements
+- Installation
+- Data format
+- API endpoints
+- proof reading...
+
+
 ## To go further
 
 Data access from database, such as mysql could be done in two ways:
