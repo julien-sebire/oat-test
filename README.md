@@ -24,6 +24,10 @@ See [Development notes](DEV_NOTES.md) to see the development details.
 Since this is not in the packagist repositories (for obvious reasons), the installation process just follows these steps :
 
 - Clone this repo (git clone https://github.com/julix/oat-test.git) or download and unzip the [archive](https://github.com/julix/oat-test/archive/master.zip) to the directory of your choice on your server (e.g. /var/www/oat-test).
+- Run the following command in the install directory to install all the necessary packages:
+    
+    $ composer update
+    
 - Set up your vhost document root to the /public directory of the repository (e.g. /var/www/oat-test/public).
     See [Apache vhost examples](https://httpd.apache.org/docs/2.4/en/vhosts/examples.html) or [NginX vhost examples](https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/) for more information.
 - Try and visit the service page in your web browser: <your vhost>/index.php/users. You should see a rather large Json string.
